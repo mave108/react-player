@@ -1,0 +1,31 @@
+{
+  "name": "react-player",
+  "version": "1.0.0",
+  "description": "video and audio player for reactjs",
+  "main": "dist/cjs/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mave108/react-player.git"
+  },
+  "keywords": [
+    "react",
+    "video",
+    "video-react",
+    "player",
+    "audio",
+    "auido-player"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^15.0.0 || ^16.0.0 || ^17.0.0",
+    "react-dom": "^15.0.0 || ^16.0.0 || ^17.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/mave108/react-player/issues"
+  },
+  "homepage": "https://github.com/mave108/react-player#readme"
+}
