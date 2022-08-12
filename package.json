@@ -5,9 +5,9 @@
   "main": "dist/cjs/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "lint": "eslint src"
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -42,7 +42,6 @@
     "@storybook/addon-links": "^6.5.10",
     "@storybook/builder-webpack4": "^6.5.10",
     "@storybook/manager-webpack4": "^6.5.10",
-    "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.5.10",
     "@storybook/testing-library": "0.0.13",
     "@types/react": "^18.0.17",
