@@ -1,6 +1,6 @@
 import React from 'react';
-import { value ComponentStory, value ComponentMeta } from '@storybook/react';
-import { value Video } from './index';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Video } from './index';
 
 export default {
   /* 👇 The title prop is optional.

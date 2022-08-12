@@ -3,8 +3,8 @@ import { VideoProps } from './types';
 
 export const Video: FC<VideoProps> = ({ src }) => {
   return (
-    <video src={src}>
-      <li></li>
+    <video controls>
+      <source src={src}></source>
     </video>
   );
 };
