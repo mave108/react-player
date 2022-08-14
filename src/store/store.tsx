@@ -1,11 +1,16 @@
 import React, { FC } from 'react';
-import { initialState } from './initials-state';
+import { initialState, InitialStateTypes } from './initials-state';
+import { playerReducer } from './reducers';
 
-const Store = React.createContext(initialState);
+const Store = React.createContext<{ state: InitialStateTypes; dispatch: React.Dispatch<any> }>({
+  state: initialState,
+  dispatch: () => null,
+});
 Store.displayName = 'Store';
 
 export const useStore = () => React.useContext(Store);
 
-export const StoreProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <Store.Provider>{children}</Store.Provider>;
+export const StoreProvider: FC<React.PropsWithChildren> = ({ children }) => {
+  const [state, dispatch] = React.useReducer(playerReducer, initialState);
+  return <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>;
 };
