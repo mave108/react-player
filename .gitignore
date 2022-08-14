@@ -50,5 +50,3 @@ example/out
 
 # lockfiles
 yarn.lock
-# vs code
-.vscode
