@@ -15,5 +15,5 @@ const Template: ComponentStory<typeof Video> = (args) => <Video {...args} />;
 export const Primary = Template.bind({});
 
 Primary.args = {
-  src: 'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
+  src: 'https://media.w3.org/2010/05/sintel/trailer_hd.mp5',
 };
