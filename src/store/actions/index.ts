@@ -14,17 +14,15 @@ export function updateDuration(duration: number) {
   };
 }
 
-export function updateProgress(progress: boolean) {
-  return {
-    type: actionTypes.SET_PROGRESS,
-    payload: progress,
-  };
-}
-
 export function togglePlay(isPlaying: boolean) {
-  console.log('action', isPlaying);
   return {
     type: actionTypes.TOGGLE_PLAY,
     payload: isPlaying,
+  };
+}
+export function updateElapsedTime(time: number) {
+  return {
+    type: actionTypes.UPDATE_ELAPSED_TIME,
+    payload: time,
   };
 }

@@ -9,6 +9,8 @@ export function playerReducer(state = initialState, action: { type: any; payload
       return { ...state, duration: action.payload };
     case actionTypes.TOGGLE_PLAY:
       return { ...state, isPlaying: action.payload };
+    case actionTypes.UPDATE_ELAPSED_TIME:
+      return { ...state, elapsedTime: action.payload };
     default:
       return state;
   }
