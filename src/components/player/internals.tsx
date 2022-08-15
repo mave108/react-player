@@ -4,6 +4,7 @@ import { Video } from '../video';
 import { PlayerProps, PreloadProps } from './types';
 import { StoreProvider } from '../../store/store';
 import { ProgressBar } from '../progress-bar';
+import { DefaultControls } from '../control-bar';
 
 export const Player: FC<PlayerProps> = ({
   id,
@@ -21,7 +22,10 @@ export const Player: FC<PlayerProps> = ({
         <Video src={src} id={id} height={height} width={width} />
         <div className="controls">
           <div className="progress">
-            <ProgressBar progress={33} />
+            <ProgressBar />
+          </div>
+          <div>
+            <DefaultControls />
           </div>
         </div>
       </StoreProvider>

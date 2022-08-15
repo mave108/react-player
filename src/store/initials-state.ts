@@ -4,8 +4,8 @@ export interface InitialStateTypes {
   canPlay: boolean;
   loading: boolean;
   duration: number;
-  progress: number;
   isPlaying: boolean;
+  elapsedTime: number;
 }
 export const initialState: InitialStateTypes = {
   muted: false,
@@ -13,6 +13,6 @@ export const initialState: InitialStateTypes = {
   canPlay: false,
   loading: false,
   duration: 0,
-  progress: 0,
   isPlaying: false,
+  elapsedTime: 0,
 };
