@@ -5,6 +5,7 @@ export interface InitialStateTypes {
   loading: boolean;
   duration: number;
   progress: number;
+  isPlaying: boolean;
 }
 export const initialState: InitialStateTypes = {
   muted: false,
@@ -13,4 +14,5 @@ export const initialState: InitialStateTypes = {
   loading: false,
   duration: 0,
   progress: 0,
+  isPlaying: false,
 };
