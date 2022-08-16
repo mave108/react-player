@@ -19,7 +19,7 @@ export const Player: FC<PlayerProps> = ({
   return (
     <div id={id} className="player">
       <StoreProvider>
-        <Video src={src} id={id} height={height} width={width} />
+        <Video src={src} id={id} height={height} width={width} loop />
         <div className="controls">
           <div className="progress">
             <ProgressBar />
