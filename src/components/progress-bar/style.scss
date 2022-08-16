@@ -4,7 +4,22 @@
   border-radius: 4px;
   height: 4px;
   position: relative;
-  span {
+  &:hover span.knob,
+  &:focus span.knob {
+    display: block;
+  }
+  span.knob {
+    height: 12px;
+    width: 12px;
+    border-radius: 6px;
+    background-color: #ddd;
+    transform: translate(0, -4px);
+    display: none;
+    &.keep-visible {
+      display: block;
+    }
+  }
+  & > span {
     display: block;
     height: 100%;
     border-radius: 4px;

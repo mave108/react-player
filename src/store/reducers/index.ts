@@ -11,6 +11,10 @@ export function playerReducer(state = initialState, action: { type: any; payload
       return { ...state, isPlaying: action.payload };
     case actionTypes.UPDATE_ELAPSED_TIME:
       return { ...state, elapsedTime: action.payload };
+    case actionTypes.SET_LOOP:
+      return { ...state, loop: action.payload };
+    case actionTypes.SET_WIDTH:
+      return { ...state, width: action.payload };
     default:
       return state;
   }

@@ -26,3 +26,17 @@ export function updateElapsedTime(time: number) {
     payload: time,
   };
 }
+
+export function setLoop(loop: boolean) {
+  return {
+    type: actionTypes.SET_LOOP,
+    payload: loop,
+  };
+}
+
+export function setWidth(width: number) {
+  return {
+    type: actionTypes.SET_LOOP,
+    payload: width,
+  };
+}
