@@ -2,10 +2,12 @@ import React, { FC, useRef, useEffect, MouseEventHandler } from 'react';
 import { ProgressBarProps } from './types';
 import './style.scss';
 import { useStore } from '../../store/store';
+import { togglePlay } from '../../store/actions';
 
 export const ProgressBar: FC<ProgressBarProps> = ({ progress: progressProps, seekable = true }) => {
   const {
     state: { elapsedTime, duration, width: videoWidth },
+    dispatch,
   } = useStore();
   const progress = (elapsedTime / duration) * 100;
   const seekableHandle = useRef<HTMLSpanElement>(null);
@@ -30,6 +32,7 @@ export const ProgressBar: FC<ProgressBarProps> = ({ progress: progressProps, see
   function mouseUp() {
     const { current } = seekableHandle;
     if (current) {
+      dispatch(togglePlay(true));
       setTimeout(() => {
         current.classList.remove('keep-visible');
       }, 1000);
@@ -38,6 +41,7 @@ export const ProgressBar: FC<ProgressBarProps> = ({ progress: progressProps, see
   }
 
   function mouseDown() {
+    dispatch(togglePlay(false));
     window.addEventListener('mousemove', handleSeek, true);
   }
   useEffect(() => {
