@@ -2,9 +2,9 @@ import React, { FC, useEffect, useLayoutEffect, useRef } from 'react';
 import { VideoProps } from './types';
 import { useStore } from '../../store/store';
 import * as action from '../../store/actions';
-import '../../styles/styles.scss';
+import './style.scss';
 
-export const Video: FC<VideoProps> = ({ src }) => {
+export const Video: FC<VideoProps> = ({ src, loop = false, height, width }) => {
   // video handle
   const video = useRef<HTMLVideoElement>(null);
   //store
@@ -15,8 +15,17 @@ export const Video: FC<VideoProps> = ({ src }) => {
     const { current: videoHandle } = video;
     if (videoHandle) {
       videoHandle.controls = false;
+    }
+  }, []);
 
-      console.log('canPlay', videoHandle.canPlayType('video/mp4'), state);
+  //set mislanious properties when player rendered
+  useEffect(() => {
+    const { current: videoHandle } = video;
+    //set loop property
+    dispatch(action.setLoop(loop));
+    //set width
+    if (videoHandle) {
+      dispatch(action.setWidth(videoHandle.offsetWidth));
     }
   }, []);
 
@@ -64,6 +73,25 @@ export const Video: FC<VideoProps> = ({ src }) => {
     }
   }, [state.isPlaying]);
 
+  //when duration change update new value
+  function handleUpdateDuration() {
+    const { current: videoHandle } = video;
+    if (videoHandle) {
+      const { duration } = videoHandle;
+      dispatch(action.updateDuration(duration));
+    }
+  }
+
+  //set loop
+  useEffect(() => {
+    const { current: videoHandle } = video;
+    if (videoHandle) {
+      const { loop } = videoHandle;
+      videoHandle.loop = loop;
+      dispatch(action.setLoop(loop));
+    }
+  }, [state.loop]);
+
   return (
     <video
       ref={video}
@@ -71,6 +99,11 @@ export const Video: FC<VideoProps> = ({ src }) => {
       onLoadedMetadata={handleLoadedMetadata}
       onTimeUpdate={handleProgress}
       onEnded={handleEndPlay}
+      onDurationChange={handleUpdateDuration}
+      height={height}
+      width={width}
+      tabIndex={-1}
+      className="player-video"
     >
       <source src={src}></source>
     </video>
