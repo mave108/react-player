@@ -6,6 +6,8 @@ export interface InitialStateTypes {
   duration: number;
   isPlaying: boolean;
   elapsedTime: number;
+  loop: boolean;
+  width: number;
 }
 export const initialState: InitialStateTypes = {
   muted: false,
@@ -15,4 +17,6 @@ export const initialState: InitialStateTypes = {
   duration: 0,
   isPlaying: false,
   elapsedTime: 0,
+  loop: false,
+  width: 0,
 };
