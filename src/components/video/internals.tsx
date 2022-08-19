@@ -92,6 +92,15 @@ export const Video: FC<VideoProps> = ({ src, loop = false, height, width }) => {
     }
   }, [state.loop]);
 
+  //subscribe elapsed time
+  useEffect(() => {
+    const { current: videoHandle } = video;
+    const { elapsedTime } = state;
+    if (videoHandle) {
+      videoHandle.currentTime = elapsedTime;
+    }
+  }, [state.elapsedTime]);
+
   return (
     <video
       ref={video}

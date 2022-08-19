@@ -2,7 +2,7 @@ import React, { FC, useRef, useEffect, MouseEventHandler } from 'react';
 import { ProgressBarProps } from './types';
 import './style.scss';
 import { useStore } from '../../store/store';
-import { togglePlay } from '../../store/actions';
+import { togglePlay, updateElapsedTime } from '../../store/actions';
 
 export const ProgressBar: FC<ProgressBarProps> = ({ progress: progressProps, seekable = true }) => {
   const {
@@ -28,29 +28,41 @@ export const ProgressBar: FC<ProgressBarProps> = ({ progress: progressProps, see
       current.classList.add('keep-visible');
     }
     moveKnob(e.clientX);
+    // console.log('seeking time', e.clientX / width);
+    // const percentSeeked = (e.clientX / (width - knobWidth)) * 100;
+    // const newSeekTime = (duration / 100) * percentSeeked;
+    // dispatch(updateElapsedTime(newSeekTime));
   }
   function mouseUp() {
+    dispatch(togglePlay(true));
     const { current } = seekableHandle;
     if (current) {
-      dispatch(togglePlay(true));
-      setTimeout(() => {
-        current.classList.remove('keep-visible');
-      }, 1000);
+      current.classList.remove('keep-visible');
     }
-    window.removeEventListener('mousemove', handleSeek, true);
+    window.removeEventListener('mousemove', mouseMove);
+    window.removeEventListener('mouseup', mouseUp);
   }
 
   function mouseDown() {
     dispatch(togglePlay(false));
-    window.addEventListener('mousemove', handleSeek, true);
+    window.addEventListener('mousemove', mouseMove);
+    window.addEventListener('mouseup', mouseUp);
+  }
+  function mouseMove(e: MouseEvent) {
+    const { clientX } = e;
+    const { current } = seekableHandle;
+    if (current) {
+      current.classList.add('keep-visible');
+      current.style.transform = `translate(${clientX}px,-4px)`;
+      console.log('move', current, clientX);
+    }
   }
   useEffect(() => {
     const { current } = seekableHandle;
     if (current) {
-      current.addEventListener('mousedown', mouseDown, false);
-      window.addEventListener('mouseup', mouseUp, false);
+      current.addEventListener('mousedown', mouseDown);
     }
-  });
+  }, []);
 
   useEffect(() => {
     const onePercent = width / 100;

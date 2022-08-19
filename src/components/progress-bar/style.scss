@@ -15,6 +15,7 @@
     background-color: #ddd;
     transform: translate(0, -4px);
     display: none;
+    cursor: pointer;
     &.keep-visible {
       display: block;
     }
