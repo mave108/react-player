@@ -69,6 +69,7 @@
     "@storybook/builder-webpack5": "^6.5.10",
     "@storybook/manager-webpack5": "^6.5.10",
     "g": "^2.0.1",
+    "lodash": "^4.17.21",
     "n": "^9.0.0"
   }
 }

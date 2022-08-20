@@ -9,12 +9,13 @@
     display: block;
   }
   span.knob {
-    height: 12px;
-    width: 12px;
-    border-radius: 6px;
+    height: 16px;
+    width: 16px;
+    border-radius: 8px;
     background-color: #ddd;
-    transform: translate(0, -4px);
+    transform: translateY(-6px);
     display: none;
+    background-image: linear-gradient(to right, #9f006c, #c8125c, #e34147);
     cursor: pointer;
     &.keep-visible {
       display: block;

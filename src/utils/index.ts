@@ -45,15 +45,19 @@ export function formatTime(seconds = 0) {
 //   return h + m + s;
 // }
 
-// export function throttle(callback: () => void, limit: number) {
-//   let wait = false;
-//   return () => {
-//     if (!wait) {
-//       callback(...arguments);
-//       wait = true;
-//       setTimeout(() => {
-//         wait = false;
-//       }, limit);
-//     }
-//   };
-// }
+export function throttle(callback: (...arg: any) => void, limit: number) {
+  let wait = false;
+  return () => {
+    if (!wait) {
+      callback(...arg);
+      wait = true;
+      setTimeout(() => {
+        wait = false;
+      }, limit);
+    }
+  };
+}
+
+export function round(num: number, fractionDigit = 2) {
+  return Math.round(num * 100) / 100;
+}

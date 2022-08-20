@@ -37,8 +37,10 @@ export const Video: FC<VideoProps> = ({ src, loop = false, height, width }) => {
   //when finish loaing metadata
   const handleLoadedMetadata = () => {
     const { current: videoHandle } = video;
+
     if (videoHandle) {
       const { duration } = videoHandle;
+      console.log('handleLoadedMetadata', duration);
       dispatch(action.updateDuration(duration));
     }
   };
@@ -98,6 +100,7 @@ export const Video: FC<VideoProps> = ({ src, loop = false, height, width }) => {
     const { elapsedTime } = state;
     if (videoHandle) {
       videoHandle.currentTime = elapsedTime;
+      console.log('updating elapsed time');
     }
   }, [state.elapsedTime]);
 
